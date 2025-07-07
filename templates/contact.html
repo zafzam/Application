@@ -3,34 +3,82 @@
 {% block title %}ติดต่อเรา{% endblock title %}
 
 {% block content %}
+<div class="position-relative py-5">
+    <!-- ลูกโลกหมุนมุมซ้ายบน -->
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+        <div class="globe-spin">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="#232526" stroke="#08d9d6" stroke-width="3"/>
+                <ellipse cx="30" cy="30" rx="24" ry="10" fill="none" stroke="#ff2e63" stroke-width="2"/>
+                <ellipse cx="30" cy="30" rx="10" ry="24" fill="none" stroke="#ff2e63" stroke-width="2"/>
+                <ellipse cx="30" cy="30" rx="18" ry="18" fill="none" stroke="#08d9d6" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </div>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <div class="card shadow-sm">
-                <div class="card-header bg-dark text-white">
+            <div class="card shadow-lg border-0" style="background: rgba(30,30,30,0.92); border: 2px solid #ff2e63;">
+                <div class="card-header text-center border-0" style="background: #232526; color: #ff2e63; letter-spacing: 0.1em; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526;">
                     <h4 class="mb-0">ติดต่อเรา</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="color: #08d9d6;">
                     <form method="post">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <label for="name" class="form-label">ชื่อ</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="name" class="form-label" style="color: #ff2e63;">ชื่อ</label>
+                            <input type="text" class="form-control" id="name" name="name" required style="background: #232526; color: #fff; border: 1px solid #08d9d6;">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">อีเมล</label>
-                            
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="email" class="form-label" style="color: #ff2e63;">อีเมล</label>
+                            <input type="email" class="form-control" id="email" name="email" required style="background: #232526; color: #fff; border: 1px solid #08d9d6;">
                         </div>
                         <div class="mb-3">
-                            <label for="message" class="form-label">ข้อความ</label>
-                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            <label for="message" class="form-label" style="color: #ff2e63;">ข้อความ</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required style="background: #232526; color: #fff; border: 1px solid #08d9d6;"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">ส่งข้อความ</button>
+                        <button type="submit" class="btn w-100" style="background: #ff2e63; color: #fff; font-weight: bold; letter-spacing: 0.1em; box-shadow: 0 0 10px #ff2e63, 0 0 20px #232526;">ส่งข้อความ</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
+/* Dystopian 1984 Future Animation */
+.card-header h4, .btn {
+    animation: flicker1984 2s infinite alternate;
+}
+@keyframes flicker1984 {
+    0% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+    50% { opacity: 0.85; text-shadow: 0 0 20px #ff2e63, 0 0 60px #232526; }
+    100% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+}
+.card {
+    box-shadow: 0 0 20px #232526, 0 0 40px #ff2e63 inset;
+}
+</style>
+<style>
+/* ลูกโลกหมุน */
+.globe-spin {
+    animation: globe-rotate 3s linear infinite;
+    filter: drop-shadow(0 0 8px #08d9d6);
+}
+@keyframes globe-rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+/* ฟอนต์และแสงแบบ dystopian */
+.card-header h3 {
+    animation: flicker1984 2s infinite alternate;
+}
+@keyframes flicker1984 {
+    0% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+    50% { opacity: 0.85; text-shadow: 0 0 20px #ff2e63, 0 0 60px #232526; }
+    100% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+}
+.card {
+    box-shadow: 0 0 20px #232526, 0 0 40px #ff2e63 inset;
+}
+</style>
 {% endblock content %}

@@ -3,7 +3,19 @@
 {% block title %}หน้าแรก{% endblock title %}
 
 {% block content %}
-<div class="container py-5">
+<div class="position-relative py-5">
+    <!-- ลูกโลกหมุนมุมซ้ายบน -->
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 10;">
+        <div class="globe-spin">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="28" fill="#232526" stroke="#08d9d6" stroke-width="3"/>
+                <ellipse cx="30" cy="30" rx="24" ry="10" fill="none" stroke="#ff2e63" stroke-width="2"/>
+                <ellipse cx="30" cy="30" rx="10" ry="24" fill="none" stroke="#ff2e63" stroke-width="2"/>
+                <ellipse cx="30" cy="30" rx="18" ry="18" fill="none" stroke="#08d9d6" stroke-width="1.5"/>
+            </svg>
+        </div>
+    </div>
+<div class="container-fluid py-5" style="background: rgba(57, 57, 57, 0.85); min-height: 100vh;">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-lg border-0" style="background: rgba(30,30,30,0.85);">
@@ -21,4 +33,27 @@
         </div>
     </div>
 </div>
+<style>
+/* ลูกโลกหมุน */
+.globe-spin {
+    animation: globe-rotate 3s linear infinite;
+    filter: drop-shadow(0 0 8px #08d9d6);
+}
+@keyframes globe-rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+/* ฟอนต์และแสงแบบ dystopian */
+.card-header h3 {
+    animation: flicker1984 2s infinite alternate;
+}
+@keyframes flicker1984 {
+    0% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+    50% { opacity: 0.85; text-shadow: 0 0 20px #ff2e63, 0 0 60px #232526; }
+    100% { opacity: 1; text-shadow: 0 0 10px #ff2e63, 0 0 40px #232526; }
+}
+.card {
+    box-shadow: 0 0 20px #232526, 0 0 40px #ff2e63 inset;
+}
+</style>
 {% endblock content %}
